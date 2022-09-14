@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hwm-)lx_bs)eg@498h732ol&ri&-n)!7dnldh5dkz%%kz$94zv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'visuareal-crm.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
