@@ -1,0 +1,61 @@
+{% extends extend %}
+
+{% block content %}
+<div class=" shadow-lg bg-white rounded p-3 ms-5 me-5" id="customerT">
+    <div class="h-60  table-responsive-custom" >
+
+      <form method="POST" class="d-flex justify-content-between">
+        <a type="submit" name="add" onclick="window.open('../../influencerAddCustomer/{{ref}}','popup','width=600,height=600');"  class="btn btn-success">ADD</a>
+      </form>
+      <span class="d-flex justify-content-center"><strong>Customers list</strong></span>
+
+      <table  class="table table-striped">
+       
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Interseted products</th>
+            {% comment %} <th scope="col">Interseted company</th> {% endcomment %}
+            <th scope="col">Influenced through</th>
+            <th scope="col">Dealer Suggested</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="addcustomerTable">
+          {% for data in all_data %}  
+          <tr>
+            <td>
+              {{forloop.counter}}
+            </td>
+            <td>
+              {{data.customerName}}
+            </td>
+            <td>
+              {{data.customerPhoneNumber}}
+            </td>
+            <td>
+              {{data.interestedProduct}}
+            </td>
+            {% comment %} <td>
+              {{data.companyInterested}}
+            </td> {% endcomment %}
+            <td>
+              {{data.influencedThrough}}
+            </td>
+            <td>
+              {{data.dealerName}}
+            </td>
+            <td>
+              <a type="button" name="delete" href="{% url 'influencerDeleteCustomer' ref data.pk %}" class="btn btn-danger">Remove</a>
+            </td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {% endblock %}

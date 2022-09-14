@@ -1,0 +1,65 @@
+{% extends extend %}
+
+{% block content %}
+<div class="shadow-lg bg-white rounded p-3 ms-5 me-5" id="OrderQT">
+    <div class="h-60 table-responsive-custom">
+
+      <form method="POST" class="d-flex justify-content-between">
+        <a type="submit" name="add" onclick="window.open('../../dealerOrderQueueInsert/{{ref}}','popup','width=600,height=600');"  class="btn btn-success">ADD</a>
+        <button type="submit" name="delete" href='#' class="btn btn-danger">Delete</button>
+      </form>
+      <span class="d-flex justify-content-center"><strong>Order queue</strong></span>
+
+      <table  class="table table-striped">
+       
+
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Products Ordered</th>
+            {% comment %} <th scope="col">Order placed</th>
+            <th scope="col">Company whom ordered</th> {% endcomment %}
+            <th scope="col">Ordered Quantity</th>
+            <th scope="col">Placed on</th>
+            <th scope="col">Expected delivery on</th>
+            <th scope="col">Actions</th>
+            
+          </tr>
+        </thead>
+        <tbody id="table1">
+          {% for data in all_data %}
+          <tr>
+
+            <td>
+              {{ forloop.counter }}
+            </td>
+            <td>
+              {{data.orderedProducts}}
+            </td>
+            {% comment %} <td>
+              {{data.orderFrom}}
+            </td>
+            <td>
+              {{data.orderTo}}
+            </td> {% endcomment %}
+            <td>
+              {{data.orderedQuantity}}
+            </td>
+            <td>
+              {{data.placedOn}}
+            </td>
+            <td>
+              {{data.expectedDelievery}}
+            </td>
+            <td>
+              <a type="button" name="delete" href="{% url 'dealerDeleteOrderQueue' ref data.pk %}" class="btn btn-danger">Remove</a>
+            </td>
+          </tr>
+          
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

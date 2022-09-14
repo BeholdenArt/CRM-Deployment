@@ -1,0 +1,61 @@
+{% extends extend %}
+
+{% block content%}
+<div class=" shadow-lg bg-white rounded p-3 ms-5 me-5" id="dealerT">
+    <div class="h-60  table-responsive-custom" >
+
+      <form method="POST" class="d-flex justify-content-between">
+        <a type="submit" name="add" onclick="window.open('ADD buttons/adddealer.html','popup','width=600,height=600');"  class="btn btn-success">ADD</a>
+        <button type="submit" name="delete" href='#' class="btn btn-danger">Delete</button>
+      </form>
+      <span class="d-flex justify-content-center"><strong>Dealers list</strong></span>
+
+      <table  class="table table-striped">
+       
+
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Referrel Code</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Pan Number</th>
+            <th scope="col">Points</th>
+          </tr>
+        </thead>
+        <tbody id="table1">
+          {% for data in all_data %}  
+          <tr>
+            <td>
+              {{forloop.counter}}
+            </td>
+            <td>
+              {{data.first_name}}
+            </td>
+            <td>
+              {{data.referrelCode}}
+            </td>
+            <td>
+              {{data.email}}
+            </td>
+            <td>
+              {{data.gstinNumber}}
+            </td>
+            <td>
+              {{data.panNumber}}
+            </td>
+            <td>
+              {{data.totalPoint}} 
+            </td>
+            <td>
+              <a type="button" name="delete" href="{% url 'deleteDealer' ref data.pk %}" class="btn btn-danger">Remove</a>
+            </td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>  
+  </div>
+{% endblock%}

@@ -1,0 +1,51 @@
+{% extends extend %}
+
+{% block content%}
+<div class=" shadow-lg bg-white rounded p-3 ms-5 me-5" id="inventoryT">
+    <div class="h-60  table-responsive-custom" >
+                <div class="d-flex justify-content-between">
+                  <form method="POST" class="d-flex justify-content-between">
+                    <a type="submit" name="add" onclick="window.open('../../companyAddInventory/{{ref}}','popup','width=600,height=600');"  class="btn btn-success">ADD</a>
+                  </form>
+                  <a type="button" name="delete" href="{% url 'companyDeleteInventoryAll' ref %}" class="btn btn-danger">Delete All</a>
+                </div>
+                  <span class="d-flex justify-content-center"><strong>Inventory</strong></span>
+  
+                  <table  class="table table-striped">
+                   
+  
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product category</th>
+                        <th scope="col">Product quantity</th>
+                        <th scope="col">Actions</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody id="table1">
+                      {% for data in all_data %}  
+                      <tr>
+                        <td>
+                          {{forloop.counter}}
+                        </td>
+                        <td>
+                          {{data.productName}}
+                        </td>
+                        <td>
+                          {{data.productCategory}}
+                        </td>
+                        <td>
+                          {{data.productQuantity}}
+                        </td>
+                        <td>
+                          <a type="button" name="delete" href="{% url 'companyDeleteInventory' ref data.pk %}" class="btn btn-danger">Remove</a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+                  
+    </div>
+</div>
+{% endblock %}

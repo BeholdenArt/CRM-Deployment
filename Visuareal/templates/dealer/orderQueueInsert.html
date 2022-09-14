@@ -1,0 +1,43 @@
+{% extends extend %}
+
+{% block content %}
+<section>        
+    <div style="text-align: center;">
+      <div class=" shadow-lg bg-white rounded p-3 ms-5 me-5" style="text-align: left; display: inline-block; text-align: left ;">
+        <h2 style="text-align:center">Add Order items</h2><br>
+          <form action="#" method="post" id="submit">
+            {% csrf_token %}
+              <label for="ProductName">Product Name: </label>
+              <select id="multi_option" class="form-control" class="native-select" data-silent-initial-value-set="false" name="ProductName">
+                {% for product in ProductName %}
+                  <option value="{{product}}">{{product.productName}}</option>
+                {% endfor %}
+              </select> <br></br>
+  
+              {% comment %} <label for="OrderPlaced">Order Placed: </label>
+              <select class="form-control" name="OrderPlaced" id="OrderPlaced">
+                {% for dealer in OrderPlaced %}
+                  <option value="{{dealer}}">{{dealer.dealerName}} 
+                {% endfor %}
+              </select> <br></br>
+              <label for="Companywhomordered">Company whom ordered: </label> 
+  
+              <select class="form-control" name="Companywhomordered" id="Companywhomordered">
+                {% for company in Companywhomordered %}
+                  <option value="{{company}}">{{company.companyName}}
+                {% endfor %}
+              </select> <br></br> {% endcomment %}
+              
+              <label for="orderedQuantity">Ordered Quantity: </label>
+              <input type="text"  class="form-control" name="orderedQuantity" id="orderedQuantity"> <br>
+              <label for="Placedon">Placed on: </label>
+              <input type="datetime-local"  class="form-control" name="Placedon" id="Placedon"> <br>
+              <label for="Expecteddeliveryon">Expected delivery on: </label>
+              <input type="datetime-local"  class="form-control" name="Expecteddeliveryon" id="Expecteddeliveryon"> <br>
+              
+              <input type="button" class="form-control btn btn-success" value="Submit"  onclick="closeSelf();"/>
+          </form>
+      </div>
+    </div>
+</section>
+{% endblock content %}
